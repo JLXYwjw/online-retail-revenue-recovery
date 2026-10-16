@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 import pandas as pd
 
-CSV = Path(r"D:\B编程\powerBI\github\datasets\ecommerce\Online_Retail.csv")
+CSV = Path(__file__).resolve().parent.parent / "data" / "raw" / "Online_Retail.csv"
 OUT = Path(__file__).resolve().parent.parent / "data" / "output"
 OUT.mkdir(parents=True, exist_ok=True)
 

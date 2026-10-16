@@ -3,7 +3,7 @@
 import pandas as pd
 from pathlib import Path
 
-CSV = Path(r"D:\B编程\powerBI\github\datasets\ecommerce\Online_Retail.csv")
+CSV = Path(__file__).resolve().parent.parent / "data" / "raw" / "Online_Retail.csv"
 df = pd.read_csv(CSV, encoding="latin1")
 
 print("shape:", df.shape)
