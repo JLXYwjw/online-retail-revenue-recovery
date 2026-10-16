@@ -1,0 +1,14 @@
+{
+  "raw_rows": 541909,
+  "clean_rows": 541909,
+  "cancel_rows": 9288,
+  "return_rows": 9290,
+  "no_customer_rows": 135080,
+  "no_customer_pct": 24.9,
+  "invoices": 25900,
+  "customers_total": 4372,
+  "customers_feat_period": 948,
+  "repurchase_rate_pct": 86.5,
+  "feat_period": "2010-01-01..2010-12-31",
+  "label_period": "2011-01-01..2011-12-31"
+}

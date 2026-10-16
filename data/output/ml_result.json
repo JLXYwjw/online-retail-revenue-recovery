@@ -1,0 +1,65 @@
+{
+  "n_total": 948,
+  "n_train": 711,
+  "n_test": 237,
+  "repurchase_rate_test_pct": 86.5,
+  "regression": {
+    "linear": {
+      "r2": 0.3178,
+      "rmse": 15618.56
+    },
+    "rf_reg": {
+      "r2": 0.0211,
+      "rmse": 18709.2
+    },
+    "gbm_reg": {
+      "r2": 0.0864,
+      "rmse": 18073.86
+    }
+  },
+  "classification": {
+    "logistic": {
+      "auc": 0.628,
+      "pr_auc": 0.9201
+    },
+    "rf_cls": {
+      "auc": 0.588,
+      "pr_auc": 0.9046
+    },
+    "gbm_cls": {
+      "auc": 0.6271,
+      "pr_auc": 0.9249
+    }
+  },
+  "top_features": [
+    {
+      "feature": "monetary_feat",
+      "importance": 0.3482
+    },
+    {
+      "feature": "monetary_log",
+      "importance": 0.2614
+    },
+    {
+      "feature": "lines_feat",
+      "importance": 0.1227
+    },
+    {
+      "feature": "recency_feat",
+      "importance": 0.115
+    },
+    {
+      "feature": "return_amt_feat",
+      "importance": 0.0583
+    },
+    {
+      "feature": "freq_feat",
+      "importance": 0.0581
+    },
+    {
+      "feature": "return_log",
+      "importance": 0.0364
+    }
+  ],
+  "note": "948 特征期客户，样本小；CLV/复购预测用于客户运营分层，非精确金额估计。DL 因样本量与可解释性不用。"
+}
