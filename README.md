@@ -68,4 +68,20 @@ pytest tests/ -q
 - Repurchase 86.5%; churn 13.5%; avg future revenue $4,066
 - Models: repurchase GBM AUC 0.627 / PR 0.925; CLV linear R² 0.318
 
+## Data source
+
+The raw file lives in `data/raw/` (excluded from git — after cloning, download it yourself).
+
+| File | What it is | Kaggle download |
+|---|---|---|
+| `Online_Retail.csv` | UK retailer transactions, 541,909 lines, 2010–2011 (UCI) | `kaggle datasets download -d tunguz/online-retail -p data/raw --unzip` |
+
+Kaggle page: https://www.kaggle.com/datasets/tunguz/online-retail
+
+```bash
+pip install kaggle
+kaggle datasets download -d tunguz/online-retail -p data/raw --unzip
+# requires a kaggle.json / KAGGLE_USERNAME + KAGGLE_KEY
+```
+
 — Jiawei Wang
