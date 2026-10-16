@@ -35,6 +35,12 @@ UK retailer, 2010–2011) — not synthetic.
 - Line-level payment/refund reconciliation needs bank/platform statements;
   this project quantifies the transaction-layer leak only — listed as next step.
 
+## Report preview
+
+![Report preview](assets/report-preview.jpg)
+
+> Full interactive report: `报告/电商收入对账与客户价值分析.html` — GitHub doesn't render HTML; open locally after cloning.
+
 ## Layout
 
 ```
