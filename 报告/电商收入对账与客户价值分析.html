@@ -4,20 +4,20 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>电商在线零售：收入对账与客户价值分析</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='2' y='8' width='28' height='18' rx='3' fill='%231d3557'/%3E%3Crect x='6' y='12' width='20' height='3' fill='%23ef476f'/%3E%3Crect x='6' y='17' width='14' height='3' fill='%23ef476f'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='2' y='8' width='28' height='18' rx='3' fill='%23b23a48'/%3E%3Crect x='6' y='12' width='20' height='3' fill='%23f4845f'/%3E%3Crect x='6' y='17' width='14' height='3' fill='%23f4845f'/%3E%3C/svg%3E">
 <style>
-  :root{--navy:#1d3557;--blue:#457b9d;--coral:#ef476f;--accent-soft:#fde8ee;--ink:#1a1a2e;--muted:#6b7280;--line:#e7eef3;--bg:#f8fafc;--card:#fff;--sand:#fdf0d5}
+  :root{--navy:#b23a48;--blue:#ef6f6c;--coral:#f4845f;--accent-soft:#ffe5d9;--ink:#1a1a2e;--muted:#6b7280;--line:#f7e1d8;--bg:#fff4ec;--card:#fff;--sand:#fdf0d5}
   *{box-sizing:border-box}
   body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.7}
   .wrap{max-width:1080px;margin:0 auto;padding:0 24px 80px}
-  header.hero{background:linear-gradient(135deg,#14213d,#457b9d);color:#fff;padding:56px 24px 44px;margin-bottom:8px}
+  header.hero{background:linear-gradient(135deg,#b23a48,#ef6f6c);color:#fff;padding:56px 24px 44px;margin-bottom:8px}
   header.hero h1{margin:0 0 12px;font-size:30px;line-height:1.25}
   header.hero .sub{opacity:.94;font-size:16px;max-width:900px}
   header.hero .meta{margin-top:18px;font-size:13px;opacity:.85}
   nav.tabs{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:5;padding:10px 24px}
   nav.tabs .wrap{padding:0;display:flex;gap:6px;flex-wrap:wrap;max-width:1080px}
   nav.tabs a{color:var(--blue);text-decoration:none;font-size:13px;font-weight:600;padding:6px 12px;border-radius:999px}
-  nav.tabs a:hover{background:#eaf3f8}
+  nav.tabs a:hover{background:#ffe8dd}
   section{padding:36px 0;border-bottom:1px solid var(--line)}
   h2{font-size:22px;margin:0 0 8px}
   h2 .n{color:var(--coral)}
@@ -32,7 +32,7 @@
   .card .lbl{font-size:13px;color:var(--muted)}
   table{width:100%;border-collapse:collapse;font-size:14px;margin:14px 0;background:#fff;table-layout:fixed}
   th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top;overflow-wrap:break-word}
-  th{background:#f3f6f9;font-weight:700;color:var(--navy)}
+  th{background:#fff1e9;font-weight:700;color:var(--navy)}
   .fig{margin:22px 0;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 16px;box-shadow:0 1px 3px rgba(29,53,87,.06)}
   .fig h4{font-size:15px;margin:0 0 4px}
   .fig .cap{font-size:12px;color:var(--muted);margin:0 0 12px}
@@ -41,8 +41,8 @@
   .fig .why .tag.so{color:var(--blue)}
   .fig .why .tag.rec{color:var(--coral)}
   .fig .why p{margin:0;font-size:13.5px}
-  .pill{display:inline-block;background:#eaf3f8;color:var(--navy);border-radius:999px;padding:2px 10px;font-size:12px;font-weight:600;margin-right:6px}
-  .callout{background:var(--accent-soft);border:1px solid #f5c6d4;border-left:4px solid var(--coral);padding:12px 16px;border-radius:8px;margin:14px 0;font-size:14px}
+  .pill{display:inline-block;background:#ffe8dd;color:var(--navy);border-radius:999px;padding:2px 10px;font-size:12px;font-weight:600;margin-right:6px}
+  .callout{background:var(--accent-soft);border:1px solid #f7c7b0;border-left:4px solid var(--coral);padding:12px 16px;border-radius:8px;margin:14px 0;font-size:14px}
   .two{grid-template-columns:1fr 1fr}
   @media(max-width:720px){.two{grid-template-columns:1fr}.cards{grid-template-columns:repeat(2,1fr)}}
   @media(max-width:520px){.bar{flex-wrap:wrap}.bar .bl{flex:0 0 100%;text-align:left;font-size:12px}.bar .bv{flex:0 0 96px;font-size:11px}.bar .track{min-width:40px}}
@@ -128,9 +128,9 @@
   <div class="fig">
     <h4>收入对账缺口 —— 退货/取消吃掉 8.6% 营收</h4>
     <p class="cap">应确认营收（&gt;0 交易）→ 退货/取消损失（负交易）→ 净营收</p>
-    <div class="bar"><div class="bl">总营收（应确认）</div><div class="track"><div class="fill" style="width:100%;background:#1d3557"></div></div><div class="bv">$10.67M</div></div>
-    <div class="bar"><div class="bl">退货/取消损失</div><div class="track"><div class="fill" style="width:8.6%;background:#ef476f"></div></div><div class="bv">-$0.92M · 8.6%</div></div>
-    <div class="bar"><div class="bl">净营收</div><div class="track"><div class="fill" style="width:91.4%;background:#457b9d"></div></div><div class="bv">$9.75M</div></div>
+    <div class="bar"><div class="bl">总营收（应确认）</div><div class="track"><div class="fill" style="width:100%;background:#b23a48"></div></div><div class="bv">$10.67M</div></div>
+    <div class="bar"><div class="bl">退货/取消损失</div><div class="track"><div class="fill" style="width:8.6%;background:#f4845f"></div></div><div class="bv">-$0.92M · 8.6%</div></div>
+    <div class="bar"><div class="bl">净营收</div><div class="track"><div class="fill" style="width:91.4%;background:#ef6f6c"></div></div><div class="bv">$9.75M</div></div>
     <p class="muted" style="font-size:12px">其中取消单 3,836 张、金额 -$0.90M（占退货/取消损失约 97%）。</p>
     <div class="why">
       <div class="tag so">洞察</div>
@@ -146,18 +146,18 @@
     <h4>月度营收 —— 2011 快速增长，2011-09 退货异常冲高</h4>
     <p class="cap">2011 各月净营收（2010 年为起步期，月均约 $50K）；退货损失按月标注</p>
     <div class="cols">
-      <div class="col"><div class="ht" style="height:47%;background:#457b9d">$608K</div><div class="lb">01</div></div>
-      <div class="col"><div class="ht" style="height:42%;background:#457b9d">$543K</div><div class="lb">02</div></div>
-      <div class="col"><div class="ht" style="height:55%;background:#457b9d">$712K</div><div class="lb">03</div></div>
-      <div class="col"><div class="ht" style="height:51%;background:#457b9d">$660K</div><div class="lb">04</div></div>
-      <div class="col"><div class="ht" style="height:57%;background:#457b9d">$734K</div><div class="lb">05</div></div>
-      <div class="col"><div class="ht" style="height:58%;background:#457b9d">$745K</div><div class="lb">06</div></div>
-      <div class="col"><div class="ht" style="height:65%;background:#457b9d">$844K</div><div class="lb">07</div></div>
-      <div class="col"><div class="ht" style="height:55%;background:#457b9d">$716K</div><div class="lb">08</div></div>
-      <div class="col"><div class="ht" style="height:76%;background:#ef476f">$993K</div><div class="lb">09</div></div>
-      <div class="col"><div class="ht" style="height:72%;background:#457b9d">$932K</div><div class="lb">10</div></div>
-      <div class="col"><div class="ht" style="height:100%;background:#1d3557">$1.30M</div><div class="lb">11</div></div>
-      <div class="col"><div class="ht" style="height:17%;background:#457b9d">$216K</div><div class="lb">12</div></div>
+      <div class="col"><div class="ht" style="height:47%;background:#ef6f6c">$608K</div><div class="lb">01</div></div>
+      <div class="col"><div class="ht" style="height:42%;background:#ef6f6c">$543K</div><div class="lb">02</div></div>
+      <div class="col"><div class="ht" style="height:55%;background:#ef6f6c">$712K</div><div class="lb">03</div></div>
+      <div class="col"><div class="ht" style="height:51%;background:#ef6f6c">$660K</div><div class="lb">04</div></div>
+      <div class="col"><div class="ht" style="height:57%;background:#ef6f6c">$734K</div><div class="lb">05</div></div>
+      <div class="col"><div class="ht" style="height:58%;background:#ef6f6c">$745K</div><div class="lb">06</div></div>
+      <div class="col"><div class="ht" style="height:65%;background:#ef6f6c">$844K</div><div class="lb">07</div></div>
+      <div class="col"><div class="ht" style="height:55%;background:#ef6f6c">$716K</div><div class="lb">08</div></div>
+      <div class="col"><div class="ht" style="height:76%;background:#f4845f">$993K</div><div class="lb">09</div></div>
+      <div class="col"><div class="ht" style="height:72%;background:#ef6f6c">$932K</div><div class="lb">10</div></div>
+      <div class="col"><div class="ht" style="height:100%;background:#b23a48">$1.30M</div><div class="lb">11</div></div>
+      <div class="col"><div class="ht" style="height:17%;background:#ef6f6c">$216K</div><div class="lb">12</div></div>
     </div>
     <p class="muted" style="font-size:12px;margin-top:6px">退货损失最高月在 <strong>2011-09（$212.9K）</strong>，占当月营收 21%；11 月营收 $1.30M 为全年峰值。</p>
     <div class="why">
@@ -173,9 +173,9 @@
   <div class="fig">
     <h4>客户集中度 —— top 10% 客户贡献 60% 营收（帕累托）</h4>
     <p class="cap">按客户总消费排序：头部客户贡献高度集中</p>
-    <div class="bar"><div class="bl">top 5% 客户</div><div class="track"><div class="fill" style="width:65.7%;background:#1d3557"></div></div><div class="bv">48.5% 营收</div></div>
-    <div class="bar"><div class="bl">top 10% 客户</div><div class="track"><div class="fill" style="width:81.2%;background:#457b9d"></div></div><div class="bv">60.0% 营收</div></div>
-    <div class="bar"><div class="bl">top 20% 客户</div><div class="track"><div class="fill" style="width:100%;background:#ef476f"></div></div><div class="bv">73.8% 营收</div></div>
+    <div class="bar"><div class="bl">top 5% 客户</div><div class="track"><div class="fill" style="width:65.7%;background:#b23a48"></div></div><div class="bv">48.5% 营收</div></div>
+    <div class="bar"><div class="bl">top 10% 客户</div><div class="track"><div class="fill" style="width:81.2%;background:#ef6f6c"></div></div><div class="bv">60.0% 营收</div></div>
+    <div class="bar"><div class="bl">top 20% 客户</div><div class="track"><div class="fill" style="width:100%;background:#f4845f"></div></div><div class="bv">73.8% 营收</div></div>
     <div class="why">
       <div class="tag so">洞察</div>
       <p><strong>营收高度集中于头部客户</strong>：5% 客户占 48.5%、20% 客户占 73.8%。头部客户留存直接决定营收基本盘，流失一位高价值客户损失远大于新客获客收益。</p>
@@ -189,10 +189,10 @@
   <div class="fig">
     <h4>客户价值分层 —— 高价值客户复购率 97%，低价值仅 77%</h4>
     <p class="cap">按 2010 年消费金额四分位分层（L1 最高 → L4 最低），观察 2011 复购</p>
-    <div class="bar"><div class="bl">L1 高价值</div><div class="track"><div class="fill" style="width:97%;background:#1d3557"></div></div><div class="bv">复购97% · $1,646</div></div>
-    <div class="bar"><div class="bl">L2</div><div class="track"><div class="fill" style="width:89%;background:#457b9d"></div></div><div class="bv">复购89% · $392</div></div>
-    <div class="bar"><div class="bl">L3</div><div class="track"><div class="fill" style="width:82%;background:#6c9a8b"></div></div><div class="bv">复购82% · $240</div></div>
-    <div class="bar"><div class="bl">L4 低价值</div><div class="track"><div class="fill" style="width:77%;background:#ef476f"></div></div><div class="bv">复购77% · $62</div></div>
+    <div class="bar"><div class="bl">L1 高价值</div><div class="track"><div class="fill" style="width:97%;background:#b23a48"></div></div><div class="bv">复购97% · $1,646</div></div>
+    <div class="bar"><div class="bl">L2</div><div class="track"><div class="fill" style="width:89%;background:#ef6f6c"></div></div><div class="bv">复购89% · $392</div></div>
+    <div class="bar"><div class="bl">L3</div><div class="track"><div class="fill" style="width:82%;background:#f6bd60"></div></div><div class="bv">复购82% · $240</div></div>
+    <div class="bar"><div class="bl">L4 低价值</div><div class="track"><div class="fill" style="width:77%;background:#f4845f"></div></div><div class="bv">复购77% · $62</div></div>
     <div class="why">
       <div class="tag so">洞察</div>
       <p>价值分层与复购强相关：<strong>高价值客户（L1）复购 97%</strong>，低价值客户（L4）仅 77%。<strong>流失风险集中在低价值客户</strong>——但他们的绝对金额小，运营性价比要权衡。</p>
@@ -222,10 +222,10 @@
   <p class="muted">复购分类 PR-AUC 高（0.92+）因正样本多（86.5% 复购）；AUC ~0.63 中等。CLV 回归上线性最优（R² 0.32），树模型过拟合（样本少）。</p>
 
   <h3>4.2 特征重要性 —— 历史消费金额主导，近期与购买次数次之</h3>
-  <div class="bar"><div class="bl">monetary（历史消费）</div><div class="track"><div class="fill" style="width:87%;background:#1d3557"></div></div><div class="bv">0.35+0.26</div></div>
-  <div class="bar"><div class="bl">lines（购买行数）</div><div class="track"><div class="fill" style="width:31%;background:#457b9d"></div></div><div class="bv">0.12</div></div>
-  <div class="bar"><div class="bl">recency（最近购买距今）</div><div class="track"><div class="fill" style="width:29%;background:#457b9d"></div></div><div class="bv">0.12</div></div>
-  <div class="bar"><div class="bl">return_amt / freq</div><div class="track"><div class="fill" style="width:29%;background:#6c9a8b"></div></div><div class="bv">0.06+0.06</div></div>
+  <div class="bar"><div class="bl">monetary（历史消费）</div><div class="track"><div class="fill" style="width:87%;background:#b23a48"></div></div><div class="bv">0.35+0.26</div></div>
+  <div class="bar"><div class="bl">lines（购买行数）</div><div class="track"><div class="fill" style="width:31%;background:#ef6f6c"></div></div><div class="bv">0.12</div></div>
+  <div class="bar"><div class="bl">recency（最近购买距今）</div><div class="track"><div class="fill" style="width:29%;background:#ef6f6c"></div></div><div class="bv">0.12</div></div>
+  <div class="bar"><div class="bl">return_amt / freq</div><div class="track"><div class="fill" style="width:29%;background:#f6bd60"></div></div><div class="bv">0.06+0.06</div></div>
   <div class="callout"><strong>诚实解读。</strong> 复购分类 AUC ~0.63 属于<strong>中等信号</strong>：因为复购率 86.5% 高度不平衡（正样本太多），且只有 948 个特征期客户。模型<strong>可用于客户流失排序</strong>（把最可能流失的排前面），但<strong>不是精确的金额预测</strong>——CLV 回归 R² 0.32 只能解释部分方差。报告不过度宣称"预测很准"，只作为运营分层的辅助信号。<strong>不用深度学习</strong>：948 样本、无序列、树/线性已够且可解释；DL 在此规模收益有限、不可解释，违背"客户运营要能讲清依据"的诉求。</div>
 </section>
 
