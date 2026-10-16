@@ -37,7 +37,7 @@
 ![客户集中度](assets/chart_03.png)
 ![客户价值分层](assets/chart_04.png)
 
-> 完整交互版报告：`报告/电商收入对账与客户价值分析.html`——GitHub 不渲染仓库内 HTML，clone 后本地打开。
+> 完整交互版报告：`report/电商收入对账与客户价值分析.html`——GitHub 不渲染仓库内 HTML，clone 后本地打开。
 
 ## 六、数据来源
 

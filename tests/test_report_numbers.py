@@ -6,7 +6,7 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "data" / "output"
-HTML = ROOT / "报告" / "电商收入对账与客户价值分析.html"
+HTML = ROOT / "report" / "电商收入对账与客户价值分析.html"
 
 
 def _html():
