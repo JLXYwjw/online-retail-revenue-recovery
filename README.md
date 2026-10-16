@@ -37,10 +37,10 @@ UK retailer, 2010–2011) — not synthetic.
 
 ## Charts
 
-![Revenue reconciliation gap](assets/chart_01.png)
-![Monthly revenue](assets/chart_02.png)
-![Customer concentration](assets/chart_03.png)
-![Customer value tiers](assets/chart_04.png)
+![Revenue reconciliation gap](assets/chart_EN_01.png)
+![Monthly revenue](assets/chart_EN_02.png)
+![Customer concentration](assets/chart_EN_03.png)
+![Customer value tiers](assets/chart_EN_04.png)
 
 > Full interactive report: `报告/电商收入对账与客户价值分析.html` — GitHub doesn't render HTML; open locally after cloning.
 
