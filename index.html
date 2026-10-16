@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Online Retail: Revenue Reconciliation &amp; Customer Value</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%23b23a48'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23f6bd60'/%3E%3C/svg%3E">
+<style>
+  :root{--ink:#3d2328;--main:#b23a48;--warm:#ef6f6c;--amber:#f4845f;--gold:#f6bd60;--bg:#fff4ec;--line:#f4d9cd;--card:#fff;--muted:#7a5a5a}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.7}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px 80px}
+  header.hero{background:linear-gradient(135deg,#7a2632,#b23a48);color:#fff;padding:56px 24px 44px;margin-bottom:8px}
+  header.hero h1{margin:0 0 12px;font-size:30px;line-height:1.25}
+  header.hero .sub{opacity:.94;font-size:16px;max-width:900px}
+  header.hero .meta{margin-top:18px;font-size:13px;opacity:.85}
+  nav.tabs{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:5;padding:10px 24px}
+  nav.tabs .wrap{padding:0;display:flex;gap:6px;flex-wrap:wrap;max-width:1080px}
+  nav.tabs a{color:var(--main);text-decoration:none;font-size:13px;font-weight:600;padding:6px 12px;border-radius:999px}
+  nav.tabs a:hover{background:#fce8df}
+  section{padding:36px 0;border-bottom:1px solid var(--line)}
+  h2{font-size:22px;margin:0 0 8px}
+  h2 .n{color:var(--main)}
+  .kicker{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--main);margin-bottom:4px}
+  h3{font-size:17px;margin:24px 0 8px}
+  p,li{font-size:14.5px}
+  .muted{color:var(--muted)}
+  .grid{display:grid;gap:16px}
+  .cards{grid-template-columns:repeat(3,1fr);margin:18px 0}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;box-shadow:0 1px 3px rgba(178,58,72,.08)}
+  .card .num{font-size:26px;font-weight:800;color:var(--main)}
+  .card .lbl{font-size:13px;color:var(--muted)}
+  table{width:100%;border-collapse:collapse;font-size:14px;margin:14px 0;background:#fff;table-layout:fixed}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top;overflow-wrap:break-word}
+  th{background:#fff0e8;font-weight:700;color:var(--main)}
+  .fig{margin:22px 0;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 16px;box-shadow:0 1px 3px rgba(178,58,72,.08)}
+  .fig h4{font-size:15px;margin:0 0 4px}
+  .fig .cap{font-size:12px;color:var(--muted);margin:0 0 12px}
+  .fig .why{display:flex;gap:12px;margin-top:14px;border-top:1px dashed var(--line);padding-top:12px}
+  .fig .why .tag{flex:0 0 60px;font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase}
+  .fig .why .tag.so{color:var(--main)}
+  .fig .why .tag.rec{color:var(--amber)}
+  .fig .why p{margin:0;font-size:13.5px}
+  .pill{display:inline-block;background:#fce8df;color:var(--main);border-radius:999px;padding:2px 10px;font-size:12px;font-weight:600;margin-right:6px}
+  .callout{background:#fff0e8;border:1px solid #f6c7b0;border-left:4px solid var(--amber);padding:12px 16px;border-radius:8px;margin:14px 0;font-size:14px}
+  .two{grid-template-columns:1fr 1fr}
+  @media(max-width:720px){.two{grid-template-columns:1fr}.cards{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:520px){.bar{flex-wrap:wrap}.bar .bl{flex:0 0 100%;text-align:left;font-size:12px}.bar .bv{flex:0 0 96px;font-size:11px}.bar .track{min-width:40px}}
+  footer{padding:30px 24px 60px;font-size:12.5px;color:var(--muted)}
+  ul{margin:6px 0 14px;padding-left:20px}
+  .bar{display:flex;align-items:center;gap:10px;margin:7px 0;font-size:13px}
+  .bar .bl{width:180px;flex:0 0 180px;text-align:right;color:var(--ink)}
+  .bar .track{flex:1;background:#f0e3dc;border-radius:6px;height:22px;position:relative;min-width:60px}
+  .bar .fill{height:100%;border-radius:6px}
+  .bar .bv{flex:0 0 110px;color:var(--muted);font-size:12px}
+  .cols{display:flex;gap:16px;align-items:flex-end;flex-wrap:wrap;margin-top:8px}
+  .cols .col{flex:1;min-width:70px;text-align:center}
+  .cols .col .ht{background:#ef6f6c;border-radius:8px 8px 0 0;display:flex;align-items:flex-end;justify-content:center;padding-bottom:6px;color:#fff;font-weight:700;font-size:11px}
+  .cols .col .lb{font-size:12px;margin-top:6px;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker" style="color:#ffd6e0">Data Analysis · E-commerce Revenue Reconciliation &amp; Customer Value</div>
+    <h1>Online Retail: Revenue Reconciliation &amp; Customer Value</h1>
+    <p class="sub">Analysis of 541k real online-retail transactions: quantify the return/cancellation leak from "recognized revenue vs net revenue" (-$0.92M), and use customer repurchase/CLV models to put operations effort on the most valuable customers.</p>
+    <div class="meta">Data: UCI Online Retail real transactions (2010–2011) · 541,909 lines / 25,900 invoices / 4,372 customers · net revenue $9.75M</div>
+  </div>
+</header>
+
+<nav class="tabs">
+  <div class="wrap">
+    <a href="#s1"><span class="n">1</span> · Objective</a>
+    <a href="#s2"><span class="n">2</span> · Cleaning</a>
+    <a href="#s3"><span class="n">3</span> · Metrics &amp; Charts</a>
+    <a href="#s4"><span class="n">4</span> · Modeling</a>
+    <a href="#s5"><span class="n">5</span> · Recommendations</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<section id="s1">
+  <div class="kicker">Part 1 · Business Objective</div>
+  <h2><span class="n">1.</span> Why this analysis</h2>
+  <p>A UK online retailer (real transaction data) faces <strong>541,909 lines / 25,900 invoices / 4,372 customers</strong>. Two core business questions:</p>
+  <ul>
+    <li><strong>Revenue reconciliation</strong>: on-book "recognized revenue" is $10.67M, but returns/cancellations/refunds cause <strong>-$0.92M leakage (8.6%)</strong> — where does it leak, and which SKU/country/month is worst.</li>
+    <li><strong>Customer value &amp; churn</strong>: <strong>top 10% of customers drive 60% of revenue</strong>; losing a high-value customer hurts most — use models to identify who will churn vs who will buy again, and spend operations effort on the most valuable customers.</li>
+  </ul>
+  <p><strong>One-line goal:</strong> plug the return/cancellation leak via revenue reconciliation, and retain high-value customers / warn of churn via customer-value models.</p>
+  <p><strong>Reconciliation boundary.</strong> This project completes <em>transaction-layer revenue reconciliation</em>: quantifies the return/cancellation gap between recognized and net revenue ($0.92M). Line-level payment/refund matching needs bank or platform statements, not in this dataset — listed as next step, not claimed done.</p>
+</section>
+
+<section id="s2">
+  <div class="kicker">Part 2 · Cleaning &amp; Preprocessing</div>
+  <h2><span class="n">2.</span> How the raw transactions became usable tables</h2>
+  <p>The raw CSV (541,909 lines / 8 cols) has typical real-e-commerce dirt:</p>
+  <table>
+    <colgroup><col style="width:26%"><col style="width:38%"><col style="width:36%"></colgroup>
+    <tr><th>Issue</th><th>Handling</th><th>Impact</th></tr>
+    <tr><td><code>CustomerID</code> missing 24.9% (135,080)</td><td>Flag as anonymous; revenue reported both ways; customer analysis uses only IDs</td><td>Anonymous lines excluded from customer modeling</td></tr>
+    <tr><td><code>Description</code> missing 1,454</td><td>Fill blank string</td><td>No information loss</td></tr>
+    <tr><td>Negative qty / negative unit price (returns/refunds)</td><td>Flag <code>is_return</code> / <code>is_refund_price</code>, add <code>revenue=qty×price</code></td><td>Return loss quantifiable</td></tr>
+    <tr><td>Cancellations (<code>C</code>-prefixed invoices)</td><td>Flag <code>is_cancel</code></td><td>9,288 cancel lines counted separately</td></tr>
+    <tr><td>Line / invoice / customer tables</td><td>Aggregate: cleaned lines, invoice level, customer RFM</td><td>Supports reconciliation &amp; modeling</td></tr>
+    <tr><td>Temporal split (no leakage)</td><td>Features 2010 full year / labels 2011 full year</td><td>No time leakage in repurchase/CLV</td></tr>
+  </table>
+  <p class="muted">No lines dropped (all dates parsed); output a 541,909-line clean table. Customers with 2010 purchases (the feature period) = <strong>948</strong>, used as the modeling sample.</p>
+</section>
+
+<section id="s3">
+  <div class="kicker">Part 3 · Key Metrics &amp; Charts</div>
+  <h2><span class="n">3.</span> Key numbers</h2>
+  <div class="grid cards">
+    <div class="card"><div class="num">$9.75M</div><div class="lbl">Net revenue</div></div>
+    <div class="card"><div class="num">-$0.92M</div><div class="lbl">Return/cancel loss (8.6%)</div></div>
+    <div class="card"><div class="num">25,900</div><div class="lbl">Invoices</div></div>
+    <div class="card"><div class="num">4,372</div><div class="lbl">Customers</div></div>
+    <div class="card"><div class="num">60%</div><div class="lbl">top10% customers' revenue share</div></div>
+    <div class="card"><div class="num">86.5%</div><div class="lbl">Feature-period repurchase rate</div></div>
+  </div>
+
+  <div class="fig">
+    <h4>Revenue reconciliation gap — returns/cancellations eat 8.6% of revenue</h4>
+    <p class="cap">Recognized revenue (positive lines) → return/cancel loss (negative lines) → net revenue</p>
+    <div class="bar"><div class="bl">Total revenue (recognized)</div><div class="track"><div class="fill" style="width:100%;background:#b23a48"></div></div><div class="bv">$10.67M</div></div>
+    <div class="bar"><div class="bl">Return/cancel loss</div><div class="track"><div class="fill" style="width:8.6%;background:#f4845f"></div></div><div class="bv">-$0.92M · 8.6%</div></div>
+    <div class="bar"><div class="bl">Net revenue</div><div class="track"><div class="fill" style="width:91.4%;background:#ef6f6c"></div></div><div class="bv">$9.75M</div></div>
+    <p class="muted" style="font-size:12px">Of which cancellations: 3,836 invoices, -$0.90M (~97% of the return/cancel loss).</p>
+    <div class="why">
+      <div class="tag so">Insight</div>
+      <p><strong>8.6% of revenue leaks through returns/cancellations</strong> (-$0.92M), and almost all of it is <strong>cancellations</strong> (3,836 invoices, -$0.90M) — a systematic issue, not sporadic refunds.</p>
+    </div>
+    <div class="why">
+      <div class="tag rec">Action</div>
+      <p>Investigate the <strong>items/times</strong> with high cancellations (next chart), pull high-cancel SKUs off the promoted slots and improve the order-confirmation flow, targeting lower cancel loss.</p>
+    </div>
+  </div>
+
+  <div class="fig">
+    <h4>Monthly revenue — fast 2011 growth, abnormal 2011-09 return spike</h4>
+    <p class="cap">2011 net revenue by month (2010 was a ramp-up, ~$50K/month); return loss annotated per month</p>
+    <div class="cols">
+      <div class="col"><div class="ht" style="height:47%;background:#ef6f6c">$608K</div><div class="lb">01</div></div>
+      <div class="col"><div class="ht" style="height:42%;background:#ef6f6c">$543K</div><div class="lb">02</div></div>
+      <div class="col"><div class="ht" style="height:55%;background:#ef6f6c">$712K</div><div class="lb">03</div></div>
+      <div class="col"><div class="ht" style="height:51%;background:#ef6f6c">$660K</div><div class="lb">04</div></div>
+      <div class="col"><div class="ht" style="height:57%;background:#ef6f6c">$734K</div><div class="lb">05</div></div>
+      <div class="col"><div class="ht" style="height:58%;background:#ef6f6c">$745K</div><div class="lb">06</div></div>
+      <div class="col"><div class="ht" style="height:65%;background:#ef6f6c">$844K</div><div class="lb">07</div></div>
+      <div class="col"><div class="ht" style="height:55%;background:#ef6f6c">$716K</div><div class="lb">08</div></div>
+      <div class="col"><div class="ht" style="height:76%;background:#f4845f">$993K</div><div class="lb">09</div></div>
+      <div class="col"><div class="ht" style="height:72%;background:#ef6f6c">$932K</div><div class="lb">10</div></div>
+      <div class="col"><div class="ht" style="height:100%;background:#b23a48">$1.30M</div><div class="lb">11</div></div>
+      <div class="col"><div class="ht" style="height:17%;background:#ef6f6c">$216K</div><div class="lb">12</div></div>
+    </div>
+    <p class="muted" style="font-size:12px;margin-top:6px">Worst return-loss month: <strong>2011-09 ($212.9K)</strong>, 21% of that month; Nov revenue $1.30M is the annual peak.</p>
+    <div class="why">
+      <div class="tag so">Insight</div>
+      <p>Revenue grows fast (2011 is 10×+ 2010), but <strong>2011-09 shows an abnormal return spike ($212.9K, 21% of the month)</strong> — concentrated returns usually mean a SKU quality/description issue or a concentrated channel refund.</p>
+    </div>
+    <div class="why">
+      <div class="tag rec">Action</div>
+      <p>Trace the <strong>SKUs and order sources</strong> behind 2011-09 returns to root-cause the spike (QC / wrong description / logistics); handle high-return items separately.</p>
+    </div>
+  </div>
+
+  <div class="fig">
+    <h4>Customer concentration — top 10% of customers drive 60% of revenue (Pareto)</h4>
+    <p class="cap">Ranked by total spend: revenue is heavily concentrated at the top</p>
+    <div class="bar"><div class="bl">top 5% customers</div><div class="track"><div class="fill" style="width:65.7%;background:#b23a48"></div></div><div class="bv">48.5% revenue</div></div>
+    <div class="bar"><div class="bl">top 10% customers</div><div class="track"><div class="fill" style="width:81.2%;background:#ef6f6c"></div></div><div class="bv">60.0% revenue</div></div>
+    <div class="bar"><div class="bl">top 20% customers</div><div class="track"><div class="fill" style="width:100%;background:#f4845f"></div></div><div class="bv">73.8% revenue</div></div>
+    <div class="why">
+      <div class="tag so">Insight</div>
+      <p><strong>Revenue is highly concentrated</strong>: 5% of customers = 48.5%, 20% = 73.8%. Retaining the top customers decides the revenue base; losing one high-value customer costs far more than acquiring a new one.</p>
+    </div>
+    <div class="why">
+      <div class="tag rec">Action</div>
+      <p>Give top customers <strong>dedicated operations</strong> (dedicated CS / targeted offers / early renewal outreach), and prioritize churn-warning effort on the top 20%.</p>
+    </div>
+  </div>
+
+  <div class="fig">
+    <h4>Customer value tiers — high-value repurchase 97%, low-value only 77%</h4>
+    <p class="cap">Quartile tiers by 2010 spend (L1 highest → L4 lowest), observed 2011 repurchase</p>
+    <div class="bar"><div class="bl">L1 high value</div><div class="track"><div class="fill" style="width:97%;background:#b23a48"></div></div><div class="bv">repurch 97% · $1,646</div></div>
+    <div class="bar"><div class="bl">L2</div><div class="track"><div class="fill" style="width:89%;background:#ef6f6c"></div></div><div class="bv">repurch 89% · $392</div></div>
+    <div class="bar"><div class="bl">L3</div><div class="track"><div class="fill" style="width:82%;background:#f6bd60"></div></div><div class="bv">repurch 82% · $240</div></div>
+    <div class="bar"><div class="bl">L4 low value</div><div class="track"><div class="fill" style="width:77%;background:#f4845f"></div></div><div class="bv">repurch 77% · $62</div></div>
+    <div class="why">
+      <div class="tag so">Insight</div>
+      <p>Value tier correlates with repurchase: <strong>high-value (L1) repurchase 97%</strong>, low-value (L4) only 77%. <strong>Churn risk concentrates in low-value customers</strong> — but their absolute amount is small, so weigh ROI.</p>
+    </div>
+    <div class="why">
+      <div class="tag rec">Action</div>
+      <p>Prioritize churn warning for <strong>L2/L3 — mid/high value but not-yet-full repurchase</strong> (meaningful amount, room to improve); L4 with low-cost automated touch (email/coupon) is enough.</p>
+    </div>
+  </div>
+</section>
+
+<section id="s4">
+  <div class="kicker">Part 4 · Modeling</div>
+  <h2><span class="n">4.</span> Business-driven customer modeling (principle · why · how)</h2>
+
+  <h3>4.1 Goal: predict "will the customer buy again" + "how much"</h3>
+  <p><strong>Why (business-driven).</strong> A rule only splits customers into high/low value by historical spend; it cannot judge <strong>who will churn next year</strong>. Using 2010 RFM features, models predict 2011 repurchase (classification) and spend (CLV regression) — so operations puts "churn warning + outreach" on <strong>likely-to-churn, meaningful-amount</strong> customers.</p>
+  <p><strong>Principle.</strong> Learn customer-history(RFM) → future-behavior mapping: baseline <em>logistic/linear regression</em> (interpretable coefficients), then <em>random forest / gradient boosting</em> (interactions, e.g. "high frequency × high returns × low value").</p>
+  <p><strong>How &amp; leakage control.</strong> All features come from <strong>2010</strong> (spend, frequency, days-since-last, return amount); all labels from <strong>2011</strong> (repurchase, future spend) — <strong>temporal split, labels never leak into features</strong>. 948 feature-period customers, stratified 75/25 by repurchase status.</p>
+  <table>
+    <colgroup><col style="width:22%"><col style="width:20%"><col style="width:20%"><col style="width:20%"><col style="width:18%"></colgroup>
+    <tr><th>Model</th><th>Repurchase AUC</th><th>Repurchase PR-AUC</th><th>CLV R²</th><th>CLV RMSE</th></tr>
+    <tr><td>Logistic</td><td>0.628</td><td>0.920</td><td>0.318</td><td>$15,619</td></tr>
+    <tr><td>Random Forest</td><td>0.588</td><td>0.905</td><td>0.021</td><td>$18,709</td></tr>
+    <tr><td>GBM</td><td>0.627</td><td>0.925</td><td>0.086</td><td>$18,074</td></tr>
+  </table>
+  <p class="muted">Repurchase PR-AUC is high (0.92+) because positives dominate (86.5% repurchase); AUC ~0.63 is medium. For CLV, linear wins (R² 0.32); trees overfit (small sample).</p>
+
+  <h3>4.2 Feature importance — historical spend dominates, recency &amp; frequency next</h3>
+  <div class="bar"><div class="bl">monetary</div><div class="track"><div class="fill" style="width:87%;background:#b23a48"></div></div><div class="bv">0.35+0.26</div></div>
+  <div class="bar"><div class="bl">lines</div><div class="track"><div class="fill" style="width:31%;background:#ef6f6c"></div></div><div class="bv">0.12</div></div>
+  <div class="bar"><div class="bl">recency</div><div class="track"><div class="fill" style="width:29%;background:#ef6f6c"></div></div><div class="bv">0.12</div></div>
+  <div class="bar"><div class="bl">return_amt / freq</div><div class="track"><div class="fill" style="width:29%;background:#f6bd60"></div></div><div class="bv">0.06+0.06</div></div>
+  <div class="callout"><strong>Honest read.</strong> Repurchase AUC ~0.63 is a <strong>medium signal</strong>: repurchase is 86.5% (imbalanced, too many positives) and only 948 feature-period customers. The model <strong>works for ranking churn risk</strong> (put the most-likely-to-churn first) but is <strong>not a precise amount forecast</strong> — CLV R² 0.32 explains only part of the variance. The report does not overclaim "accurate prediction"; it is an auxiliary signal for operations tiering. <strong>No deep learning</strong>: 948 samples, no sequence; trees/linear already fit and stay explainable; DL adds little at this scale and hurts the "customer ops must be explainable" narrative.</div>
+</section>
+
+<section id="s5">
+  <div class="kicker">Part 5 · Recommendations</div>
+  <h2><span class="n">5.</span> One actionable plan</h2>
+  <div class="grid two">
+    <div class="card">
+      <span class="pill">Revenue recovery</span>
+      <h3 style="margin-top:6px">1 · Govern cancellations, plug the -$0.90M leak</h3>
+      <p>97% of return/cancel loss is cancellations (3,836, -$0.90M). Investigate high-cancel SKUs/times, optimize order confirmation &amp; stock, target lower cancel rate.</p>
+    </div>
+    <div class="card">
+      <span class="pill">Anomaly trace</span>
+      <h3 style="margin-top:6px">2 · Trace the 2011-09 abnormal return spike</h3>
+      <p>2011-09 returns $212.9K (21% of month). Locate the SKU/order-source behind concentrated returns (QC / wrong description / logistics); handle high-return items separately.</p>
+    </div>
+    <div class="card">
+      <span class="pill">Customer ops</span>
+      <h3 style="margin-top:6px">3 · Dedicated ops for high-value customers</h3>
+      <p>top10% drive 60% of revenue, L1 repurchase 97%. Dedicated CS / targeted offers; prioritize retention on the top 20% (73.8% of revenue).</p>
+    </div>
+    <div class="card">
+      <span class="pill">Churn warning</span>
+      <h3 style="margin-top:6px">4 · Use the model to rank churn-risk customers</h3>
+      <p>Repurchase model (AUC 0.63) ranks outreach: touch L2/L3 mid/high-value not-yet-full customers first; L4 with low-cost automated touch.</p>
+    </div>
+  </div>
+  <p class="muted">Repo deliverables: line clean (<code>retail_clean.parquet</code>), invoice level (<code>invoice_level.parquet</code>), customer RFM (<code>customer_rfm.parquet</code>), metrics/ML (<code>metrics.json</code> / <code>ml_result.json</code>), this report. Line-level payment/refund reconciliation needs external data, listed as next step.</p>
+</section>
+
+</div>
+<footer>Online Retail Revenue Recovery &amp; Customer Value — Jiawei Wang</footer>
+</body>
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>电商在线零售：收入对账与客户价值分析</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='2' y='8' width='28' height='18' rx='3' fill='%23b23a48'/%3E%3Crect x='6' y='12' width='20' height='3' fill='%23f4845f'/%3E%3Crect x='6' y='17' width='14' height='3' fill='%23f4845f'/%3E%3C/svg%3E">
+<style>
+  :root{--navy:#b23a48;--blue:#ef6f6c;--coral:#f4845f;--accent-soft:#ffe5d9;--ink:#1a1a2e;--muted:#6b7280;--line:#f7e1d8;--bg:#fff4ec;--card:#fff;--sand:#fdf0d5}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.7}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px 80px}
+  header.hero{background:linear-gradient(135deg,#b23a48,#ef6f6c);color:#fff;padding:56px 24px 44px;margin-bottom:8px}
+  header.hero h1{margin:0 0 12px;font-size:30px;line-height:1.25}
+  header.hero .sub{opacity:.94;font-size:16px;max-width:900px}
+  header.hero .meta{margin-top:18px;font-size:13px;opacity:.85}
+  nav.tabs{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:5;padding:10px 24px}
+  nav.tabs .wrap{padding:0;display:flex;gap:6px;flex-wrap:wrap;max-width:1080px}
+  nav.tabs a{color:var(--blue);text-decoration:none;font-size:13px;font-weight:600;padding:6px 12px;border-radius:999px}
+  nav.tabs a:hover{background:#ffe8dd}
+  section{padding:36px 0;border-bottom:1px solid var(--line)}
+  h2{font-size:22px;margin:0 0 8px}
+  h2 .n{color:var(--coral)}
+  .kicker{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--coral);margin-bottom:4px}
+  h3{font-size:17px;margin:24px 0 8px}
+  p,li{font-size:14.5px}
+  .muted{color:var(--muted)}
+  .grid{display:grid;gap:16px}
+  .cards{grid-template-columns:repeat(3,1fr);margin:18px 0}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;box-shadow:0 1px 3px rgba(29,53,87,.06)}
+  .card .num{font-size:26px;font-weight:800;color:var(--navy)}
+  .card .lbl{font-size:13px;color:var(--muted)}
+  table{width:100%;border-collapse:collapse;font-size:14px;margin:14px 0;background:#fff;table-layout:fixed}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top;overflow-wrap:break-word}
+  th{background:#fff1e9;font-weight:700;color:var(--navy)}
+  .fig{margin:22px 0;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 16px;box-shadow:0 1px 3px rgba(29,53,87,.06)}
+  .fig h4{font-size:15px;margin:0 0 4px}
+  .fig .cap{font-size:12px;color:var(--muted);margin:0 0 12px}
+  .fig .why{display:flex;gap:12px;margin-top:14px;border-top:1px dashed var(--line);padding-top:12px}
+  .fig .why .tag{flex:0 0 60px;font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase}
+  .fig .why .tag.so{color:var(--blue)}
+  .fig .why .tag.rec{color:var(--coral)}
+  .fig .why p{margin:0;font-size:13.5px}
+  .pill{display:inline-block;background:#ffe8dd;color:var(--navy);border-radius:999px;padding:2px 10px;font-size:12px;font-weight:600;margin-right:6px}
+  .callout{background:var(--accent-soft);border:1px solid #f7c7b0;border-left:4px solid var(--coral);padding:12px 16px;border-radius:8px;margin:14px 0;font-size:14px}
+  .two{grid-template-columns:1fr 1fr}
+  @media(max-width:720px){.two{grid-template-columns:1fr}.cards{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:520px){.bar{flex-wrap:wrap}.bar .bl{flex:0 0 100%;text-align:left;font-size:12px}.bar .bv{flex:0 0 96px;font-size:11px}.bar .track{min-width:40px}}
+  footer{padding:30px 24px 60px;font-size:12.5px;color:var(--muted)}
+  ul{margin:6px 0 14px;padding-left:20px}
+  .bar{display:flex;align-items:center;gap:10px;margin:7px 0;font-size:13px}
+  .bar .bl{width:180px;flex:0 0 180px;text-align:right;color:var(--ink)}
+  .bar .track{flex:1;background:#e2e8f0;border-radius:6px;height:22px;position:relative;min-width:60px}
+  .bar .fill{height:100%;border-radius:6px}
+  .bar .bv{flex:0 0 110px;color:var(--muted);font-size:12px}
+  .cols{display:flex;gap:16px;align-items:flex-end;flex-wrap:wrap;margin-top:8px}
+  .cols .col{flex:1;min-width:90px;text-align:center}
+  .cols .col .ht{background:var(--blue);border-radius:8px 8px 0 0;display:flex;align-items:flex-end;justify-content:center;padding-bottom:6px;color:#fff;font-weight:700}
+  .cols .col .lb{font-size:12px;margin-top:6px;color:var(--muted)}
+  .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin:10px 0 2px}
+  .legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker" style="color:#ffd6e0">数据分析项目 · 电商收入对账与客户价值（Revenue Recovery）</div>
+    <h1>电商在线零售：收入对账与客户价值分析</h1>
+    <p class="sub">54 万行真实在线零售交易：量化"应确认营收 vs 净营收"的退货/取消缺口（-$0.92M），并用客户复购/CLV 模型把运营资源投到最值钱的客户上。</p>
+    <div class="meta">数据来源：UCI Online Retail 真实交易（2010–2011）· 541,909 行 / 25,900 张发票 / 4,372 客户 · 净营收 $9.75M</div>
+  </div>
+</header>
+
+<nav class="tabs">
+  <div class="wrap">
+    <a href="#s1"><span class="n">1</span> · 分析目标</a>
+    <a href="#s2"><span class="n">2</span> · 数据清洗</a>
+    <a href="#s3"><span class="n">3</span> · 指标与图表</a>
+    <a href="#s4"><span class="n">4</span> · 建模</a>
+    <a href="#s5"><span class="n">5</span> · 建议</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<section id="s1">
+  <div class="kicker">第一部分 · 业务目标</div>
+  <h2><span class="n">1.</span> 为什么做这个分析</h2>
+  <p>某英国在线零售商（真实交易数据）面对 <strong>541,909 行交易 / 25,900 张发票 / 4,372 个客户</strong>。两个核心业务问题：</p>
+  <ul>
+    <li><strong>收入对账（Revenue Recovery）</strong>：账上"应确认营收"是 $10.67M，但退货/取消/退款造成 <strong>-$0.92M 的收入流失（8.6%）</strong>——漏在哪、哪些 SKU/国家/月份最高。</li>
+    <li><strong>客户价值与流失</strong>：<strong>top 10% 客户贡献 60% 营收</strong>，高价值客户流失损失最大——用模型识别谁会流失/谁会继续买，把运营资源投给最值钱的客户。</li>
+  </ul>
+  <p><strong>一句话目标：</strong> 用收入对账堵住退货/取消的漏损，用客户价值模型做高价值客户留存与流失预警。</p>
+  <p><strong>对账边界。</strong> 本项目做的是<em>交易数据层收入对账</em>：把"应确认营收 vs 实际净营收"的退货/取消缺口量化（$0.92M）。逐笔支付/退款流水核对需银行或平台流水数据，本数据集不含，列为下一步，不冒充已做。</p>
+</section>
+
+<section id="s2">
+  <div class="kicker">第二部分 · 数据清洗与预处理</div>
+  <h2><span class="n">2.</span> 原始交易如何变成可用表</h2>
+  <p>原始 CSV（541,909 行 / 8 列）有典型的真实电商脏问题：</p>
+  <table>
+    <colgroup><col style="width:26%"><col style="width:38%"><col style="width:36%"></colgroup>
+    <tr><th>问题</th><th>处理</th><th>影响</th></tr>
+    <tr><td><code>CustomerID</code> 缺失 24.9%（135,080 行）</td><td>标记匿名交易，收入口径含/不含两版；客户分析仅用有 ID</td><td>匿名交易不参与客户建模</td></tr>
+    <tr><td><code>Description</code> 缺失 1,454 行</td><td>填空字符串</td><td>无信息损失</td></tr>
+    <tr><td>负数量 / 负单价（退货退款）</td><td>标志 <code>is_return</code> / <code>is_refund_price</code>，新增 <code>revenue=数量×单价</code></td><td>退货损失可量化</td></tr>
+    <tr><td>取消单（发票号 <code>C</code> 前缀）</td><td>标志 <code>is_cancel</code></td><td>取消 9,288 行单独统计</td></tr>
+    <tr><td>行级/发票级/客户级三张表</td><td>分别聚合：行清洗表、发票聚合、客户 RFM</td><td>支撑收入对账与客户建模</td></tr>
+    <tr><td>时间切分（防泄漏）</td><td>特征期 2010 全年 / 标签期 2011 全年</td><td>客户复购/CLV 预测无时间泄漏</td></tr>
+  </table>
+  <p class="muted">无行被删除（日期全部解析成功）；输出 541,909 行清洗表。特征期（2010 年）有购买记录的客户 <strong>948 人</strong>，作为客户建模样本。</p>
+</section>
+
+<section id="s3">
+  <div class="kicker">第三部分 · 核心指标与图表</div>
+  <h2><span class="n">3.</span> 关键数字</h2>
+  <div class="grid cards">
+    <div class="card"><div class="num">$9.75M</div><div class="lbl">净营收</div></div>
+    <div class="card"><div class="num">-$0.92M</div><div class="lbl">退货/取消损失（8.6%）</div></div>
+    <div class="card"><div class="num">25,900</div><div class="lbl">发票</div></div>
+    <div class="card"><div class="num">4,372</div><div class="lbl">客户</div></div>
+    <div class="card"><div class="num">60%</div><div class="lbl">top10%客户营收贡献</div></div>
+    <div class="card"><div class="num">86.5%</div><div class="lbl">特征期客户复购率</div></div>
+  </div>
+
+  <div class="fig">
+    <h4>收入对账缺口 —— 退货/取消吃掉 8.6% 营收</h4>
+    <p class="cap">应确认营收（&gt;0 交易）→ 退货/取消损失（负交易）→ 净营收</p>
+    <div class="bar"><div class="bl">总营收（应确认）</div><div class="track"><div class="fill" style="width:100%;background:#b23a48"></div></div><div class="bv">$10.67M</div></div>
+    <div class="bar"><div class="bl">退货/取消损失</div><div class="track"><div class="fill" style="width:8.6%;background:#f4845f"></div></div><div class="bv">-$0.92M · 8.6%</div></div>
+    <div class="bar"><div class="bl">净营收</div><div class="track"><div class="fill" style="width:91.4%;background:#ef6f6c"></div></div><div class="bv">$9.75M</div></div>
+    <p class="muted" style="font-size:12px">其中取消单 3,836 张、金额 -$0.90M（占退货/取消损失约 97%）。</p>
+    <div class="why">
+      <div class="tag so">洞察</div>
+      <p><strong>8.6% 的营收在退货/取消中流失</strong>（-$0.92M），且几乎全部来自<strong>取消单</strong>（3,836 张发票、-$0.90M）——不是零星退款，是系统性取消。</p>
+    </div>
+    <div class="why">
+      <div class="tag rec">建议</div>
+      <p>先查取消单高发的<strong>货品/时段</strong>（见下图），把取消率高的 SKU 从主推位撤下、优化下单确认流程，目标把取消损失降下来。</p>
+    </div>
+  </div>
+
+  <div class="fig">
+    <h4>月度营收 —— 2011 快速增长，2011-09 退货异常冲高</h4>
+    <p class="cap">2011 各月净营收（2010 年为起步期，月均约 $50K）；退货损失按月标注</p>
+    <div class="cols">
+      <div class="col"><div class="ht" style="height:47%;background:#ef6f6c">$608K</div><div class="lb">01</div></div>
+      <div class="col"><div class="ht" style="height:42%;background:#ef6f6c">$543K</div><div class="lb">02</div></div>
+      <div class="col"><div class="ht" style="height:55%;background:#ef6f6c">$712K</div><div class="lb">03</div></div>
+      <div class="col"><div class="ht" style="height:51%;background:#ef6f6c">$660K</div><div class="lb">04</div></div>
+      <div class="col"><div class="ht" style="height:57%;background:#ef6f6c">$734K</div><div class="lb">05</div></div>
+      <div class="col"><div class="ht" style="height:58%;background:#ef6f6c">$745K</div><div class="lb">06</div></div>
+      <div class="col"><div class="ht" style="height:65%;background:#ef6f6c">$844K</div><div class="lb">07</div></div>
+      <div class="col"><div class="ht" style="height:55%;background:#ef6f6c">$716K</div><div class="lb">08</div></div>
+      <div class="col"><div class="ht" style="height:76%;background:#f4845f">$993K</div><div class="lb">09</div></div>
+      <div class="col"><div class="ht" style="height:72%;background:#ef6f6c">$932K</div><div class="lb">10</div></div>
+      <div class="col"><div class="ht" style="height:100%;background:#b23a48">$1.30M</div><div class="lb">11</div></div>
+      <div class="col"><div class="ht" style="height:17%;background:#ef6f6c">$216K</div><div class="lb">12</div></div>
+    </div>
+    <p class="muted" style="font-size:12px;margin-top:6px">退货损失最高月在 <strong>2011-09（$212.9K）</strong>，占当月营收 21%；11 月营收 $1.30M 为全年峰值。</p>
+    <div class="why">
+      <div class="tag so">洞察</div>
+      <p>营收整体快速增长（2011 较 2010 放大 10 倍以上），但 <strong>2011-09 出现异常退货峰值（$212.9K、占当月 21%）</strong>——集中退货通常是某 SKU 质量/描述问题或某渠道集中退款。</p>
+    </div>
+    <div class="why">
+      <div class="tag rec">建议</div>
+      <p>回溯 2011-09 退货对应的<strong>SKU 与订单来源</strong>，定位集中退货根因（品控/描述不符/物流）；高退货 SKU 单独处理。</p>
+    </div>
+  </div>
+
+  <div class="fig">
+    <h4>客户集中度 —— top 10% 客户贡献 60% 营收（帕累托）</h4>
+    <p class="cap">按客户总消费排序：头部客户贡献高度集中</p>
+    <div class="bar"><div class="bl">top 5% 客户</div><div class="track"><div class="fill" style="width:65.7%;background:#b23a48"></div></div><div class="bv">48.5% 营收</div></div>
+    <div class="bar"><div class="bl">top 10% 客户</div><div class="track"><div class="fill" style="width:81.2%;background:#ef6f6c"></div></div><div class="bv">60.0% 营收</div></div>
+    <div class="bar"><div class="bl">top 20% 客户</div><div class="track"><div class="fill" style="width:100%;background:#f4845f"></div></div><div class="bv">73.8% 营收</div></div>
+    <div class="why">
+      <div class="tag so">洞察</div>
+      <p><strong>营收高度集中于头部客户</strong>：5% 客户占 48.5%、20% 客户占 73.8%。头部客户留存直接决定营收基本盘，流失一位高价值客户损失远大于新客获客收益。</p>
+    </div>
+    <div class="why">
+      <div class="tag rec">建议</div>
+      <p>对头部客户建<strong>专属运营</strong>（专属客服/定向优惠/提前续订触达），把流失预警资源优先给 top 20% 客户。</p>
+    </div>
+  </div>
+
+  <div class="fig">
+    <h4>客户价值分层 —— 高价值客户复购率 97%，低价值仅 77%</h4>
+    <p class="cap">按 2010 年消费金额四分位分层（L1 最高 → L4 最低），观察 2011 复购</p>
+    <div class="bar"><div class="bl">L1 高价值</div><div class="track"><div class="fill" style="width:97%;background:#b23a48"></div></div><div class="bv">复购97% · $1,646</div></div>
+    <div class="bar"><div class="bl">L2</div><div class="track"><div class="fill" style="width:89%;background:#ef6f6c"></div></div><div class="bv">复购89% · $392</div></div>
+    <div class="bar"><div class="bl">L3</div><div class="track"><div class="fill" style="width:82%;background:#f6bd60"></div></div><div class="bv">复购82% · $240</div></div>
+    <div class="bar"><div class="bl">L4 低价值</div><div class="track"><div class="fill" style="width:77%;background:#f4845f"></div></div><div class="bv">复购77% · $62</div></div>
+    <div class="why">
+      <div class="tag so">洞察</div>
+      <p>价值分层与复购强相关：<strong>高价值客户（L1）复购 97%</strong>，低价值客户（L4）仅 77%。<strong>流失风险集中在低价值客户</strong>——但他们的绝对金额小，运营性价比要权衡。</p>
+    </div>
+    <div class="why">
+      <div class="tag rec">建议</div>
+      <p>流失预警优先<strong>L2/L3 中高价值但复购未满的客户</strong>（金额可观且有提升空间）；L4 用低成本自动化触达（邮件/优惠券）即可。</p>
+    </div>
+  </div>
+</section>
+
+<section id="s4">
+  <div class="kicker">第四部分 · 建模</div>
+  <h2><span class="n">4.</span> 业务驱动的客户建模（原理 · 为什么 · 怎么用）</h2>
+
+  <h3>4.1 目标：预测"客户明年还买不买" + "会买多少"</h3>
+  <p><strong>为什么（业务驱动）。</strong> 规则只能把客户按历史金额分成高/低价值，无法判断<strong>谁明年会流失</strong>。用 2010 年 RFM 特征训练模型，预测客户在 2011 年是否复购（分类）和消费多少（CLV 回归）——让运营把"流失预警 + 触达"资源优先投给<strong>会流失且金额可观</strong>的客户。</p>
+  <p><strong>原理。</strong> 学习 客户历史行为(RFM) → 未来行为的映射：基线<em>逻辑回归/线性回归</em>（可解释系数），再用<em>随机森林/梯度提升</em>（自动抓交互，如"高频 × 高退货 × 低价值"）。</p>
+  <p><strong>怎么用与防泄漏。</strong> 特征全部来自 <strong>2010 年</strong>（金额、频次、最近购买天数、退货金额），标签全部来自 <strong>2011 年</strong>（是否复购、未来消费额）——<strong>时间切分，标签不泄漏进特征</strong>。948 个特征期客户按复购状态分层 75/25 切分。</p>
+  <table>
+    <colgroup><col style="width:22%"><col style="width:20%"><col style="width:20%"><col style="width:20%"><col style="width:18%"></colgroup>
+    <tr><th>模型</th><th>复购 AUC</th><th>复购 PR-AUC</th><th>CLV R²</th><th>CLV RMSE</th></tr>
+    <tr><td>逻辑回归</td><td>0.628</td><td>0.920</td><td>0.318</td><td>$15,619</td></tr>
+    <tr><td>随机森林</td><td>0.588</td><td>0.905</td><td>0.021</td><td>$18,709</td></tr>
+    <tr><td>梯度提升 GBM</td><td>0.627</td><td>0.925</td><td>0.086</td><td>$18,074</td></tr>
+  </table>
+  <p class="muted">复购分类 PR-AUC 高（0.92+）因正样本多（86.5% 复购）；AUC ~0.63 中等。CLV 回归上线性最优（R² 0.32），树模型过拟合（样本少）。</p>
+
+  <h3>4.2 特征重要性 —— 历史消费金额主导，近期与购买次数次之</h3>
+  <div class="bar"><div class="bl">monetary（历史消费）</div><div class="track"><div class="fill" style="width:87%;background:#b23a48"></div></div><div class="bv">0.35+0.26</div></div>
+  <div class="bar"><div class="bl">lines（购买行数）</div><div class="track"><div class="fill" style="width:31%;background:#ef6f6c"></div></div><div class="bv">0.12</div></div>
+  <div class="bar"><div class="bl">recency（最近购买距今）</div><div class="track"><div class="fill" style="width:29%;background:#ef6f6c"></div></div><div class="bv">0.12</div></div>
+  <div class="bar"><div class="bl">return_amt / freq</div><div class="track"><div class="fill" style="width:29%;background:#f6bd60"></div></div><div class="bv">0.06+0.06</div></div>
+  <div class="callout"><strong>诚实解读。</strong> 复购分类 AUC ~0.63 属于<strong>中等信号</strong>：因为复购率 86.5% 高度不平衡（正样本太多），且只有 948 个特征期客户。模型<strong>可用于客户流失排序</strong>（把最可能流失的排前面），但<strong>不是精确的金额预测</strong>——CLV 回归 R² 0.32 只能解释部分方差。报告不过度宣称"预测很准"，只作为运营分层的辅助信号。<strong>不用深度学习</strong>：948 样本、无序列、树/线性已够且可解释；DL 在此规模收益有限、不可解释，违背"客户运营要能讲清依据"的诉求。</div>
+</section>
+
+<section id="s5">
+  <div class="kicker">第五部分 · 建议</div>
+  <h2><span class="n">5.</span> 汇总成一份可落地的方案</h2>
+  <div class="grid two">
+    <div class="card">
+      <span class="pill">收入回收</span>
+      <h3 style="margin-top:6px">1 · 治理取消单，堵住 -$0.90M 漏损</h3>
+      <p>退货/取消损失 97% 来自取消单（3,836 张、-$0.90M）。查高取消 SKU/时段，优化下单确认与库存，目标降取消率。</p>
+    </div>
+    <div class="card">
+      <span class="pill">异常回溯</span>
+      <h3 style="margin-top:6px">2 · 回溯 2011-09 异常退货峰值</h3>
+      <p>2011-09 退货 $212.9K（占当月 21%）。定位集中退货的 SKU/订单来源（品控/描述不符/物流），单独处理高退货品。</p>
+    </div>
+    <div class="card">
+      <span class="pill">客户运营</span>
+      <h3 style="margin-top:6px">3 · 高价值客户专属运营</h3>
+      <p>top10% 客户贡献 60% 营收、L1 复购 97%。头部客户专属客服/定向优惠，把留存资源优先给 top20%（73.8% 营收）。</p>
+    </div>
+    <div class="card">
+      <span class="pill">流失预警</span>
+      <h3 style="margin-top:6px">4 · 用模型给流失客户排序触达</h3>
+      <p>复购模型（AUC 0.63）用于排序：优先触达 L2/L3 中高价值且复购未满的客户；L4 用低成本自动化触达。</p>
+    </div>
+  </div>
+  <p class="muted">仓库交付物：行级清洗（<code>retail_clean.parquet</code>）、发票聚合（<code>invoice_level.parquet</code>）、客户 RFM（<code>customer_rfm.parquet</code>）、指标/ML（<code>metrics.json</code> / <code>ml_result.json</code>）、本报告。逐笔支付/退款流水对账需外部数据，列为下一步。</p>
+</section>
+
+</div>
+</body>
+</html>

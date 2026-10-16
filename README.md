@@ -42,7 +42,7 @@ UK retailer, 2010–2011) — not synthetic.
 ![Customer concentration](assets/chart_EN_03.png)
 ![Customer value tiers](assets/chart_EN_04.png)
 
-> Full interactive report: `报告/电商收入对账与客户价值分析.html` — GitHub doesn't render HTML; open locally after cloning.
+> Full interactive report: open `index.html` (English) or `index.zh-CN.html` (Chinese) after cloning — GitHub doesn't render HTML.
 
 ## Layout
 
@@ -54,8 +54,8 @@ scripts/
 tests/
   test_cleaning.py   # shape, return/cancel counts, no temporal leakage
   test_report_numbers.py  # recompute metrics from parquet, assert HTML matches
-报告/
-  电商收入对账与客户价值分析.html   # Chinese report, every chart has Insight + Action
+index.html        # English interactive report
+index.zh-CN.html  # Chinese report, every chart has Insight + Action
 ```
 
 ## Run it
