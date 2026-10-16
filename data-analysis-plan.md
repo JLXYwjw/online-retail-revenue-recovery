@@ -1,48 +1,48 @@
-# 电商在线零售：收入对账与客户价值分析 — 业务大纲
+# Online Retail: Revenue Reconciliation & Customer Value — Business Plan
 
-## 1. 分析目标（业务驱动）
-某电商（英国在线零售商，UCI Online Retail 真实交易数据）要回答：
-- **收入对账（revenue reconciliation）**：账面"应确认营收" vs 实际净营收，退货/取消/负单价造成的 revenue leakage 有多少、在哪。
-- **客户价值与流失**：4,372 个客户里，哪些是高价值该重点运营、哪些在流失——把有限运营/营销资源投给最值钱的客户。
-- **落地**：给出可执行的收入回收（减少退货损失/优化货品）与客户运营（高价值客户留存）建议。
+## 1. Business Objectives (driven by the business)
+An online retailer (UK, UCI Online Retail real transaction data) needs to answer:
+- **Revenue reconciliation**: booked "revenue to recognize" vs actual net revenue — how much and where is the revenue leakage from returns/cancellations/negative unit prices.
+- **Customer value & churn**: of the 4,372 customers, which are high-value (prioritize) and which are churning — put limited operations/marketing budget into the most valuable customers.
+- **Delivery**: executable revenue-recovery (reduce return loss / optimize assortment) and customer-operations (retain high-value customers) recommendations.
 
-## 2. 数据
-- 来源：`datasets/ecommerce/Online_Retail.csv`（UCI 经典真实数据），541,909 行 / 8 列。
-- 字段：InvoiceNo（C 前缀=取消单）、StockCode、Description、Quantity、InvoiceDate、UnitPrice、CustomerID、Country。
-- 时间：2010-01-12 → 2011-12-10。
-- 已知脏特征：CustomerID 缺失 24.9%、Description 缺失 1,454、Quantity/UnitPrice 有负值（退货/退款）、取消单 9,288 行。
+## 2. Data
+- Source: `datasets/ecommerce/Online_Retail.csv` (UCI classic real data), 541,909 rows / 8 columns.
+- Fields: InvoiceNo (C prefix = cancellation), StockCode, Description, Quantity, InvoiceDate, UnitPrice, CustomerID, Country.
+- Time: 2010-01-12 → 2011-12-10.
+- Known dirty features: CustomerID missing 24.9%, Description missing 1,454, negative Quantity/UnitPrice (returns/refunds), 9,288 cancellation lines.
 
-## 3. 清洗与预处理
-- 删除/标记无 CustomerID 行（匿名交易，做收入口径含/不含两版）。
-- Description 缺失填充/剔除。
-- 新增：revenue = Quantity × UnitPrice；发票层聚合金额；标志字段（取消单、退货行）。
-- 客户层特征（RFM）：总金额、购买次数、最近购买距快照天数、购买间隔、退货金额。
-- 客户切分：按时间——前 12 个月训练/后观测期验证（客户复购预测，时间切分合理）。
+## 3. Cleaning & Preprocessing
+- Drop/mark rows without CustomerID (anonymous transactions; revenue measured two ways: with/without).
+- Fill/drop missing Description.
+- Derive: revenue = Quantity × UnitPrice; invoice-level aggregation; flag fields (cancellation, return lines).
+- Customer-level features (RFM): total amount, purchase count, days since last purchase, purchase interval, return amount.
+- Customer split by time: first 12 months train / later observation window validate (customer repurchase prediction, time split is valid).
 
-## 4. 指标
-- 收入对账：总营收(>0) $10.67M；退货/取消(<0) -$0.92M（1.7%）；净营收；取消单金额。
-- 客户：客户数、人均 GMV、RFM 分层、前 N% 客户贡献占比（集中度）。
-- 复购/流失：观测期复购率、流失客户占比。
+## 4. Metrics
+- Revenue reconciliation: total revenue (>0) $10.67M; returns/cancellations (<0) -$0.92M (1.7%); net revenue; cancellation amount.
+- Customer: customer count, per-customer GMV, RFM tiers, top N% customer contribution share (concentration).
+- Repurchase/churn: repurchase rate in observation window, churned-customer share.
 
-## 5. 建模（业务需要才用，讲原理/为什么/怎么用）
-- 目标 A（客户价值回归）：用 RFM 特征预测客户"未来消费额"（CLV），给客户运营排序。
-- 目标 B（复购分类）：预测客户观测期后是否再购买（流失预警）——时间切分，无泄漏。
-- 方法：基线线性回归/逻辑回归 + 树模型（RF/GBM）；DL 判断：客户数 ~4,400，无序列优势，DL 收益有限、不可解释——不用 DL，说明理由。
-- 指标：回归 RMSE/R²、分类 AUC/PR；诚实声明样本量与时间窗口限制。
+## 5. Modeling (used only where the business needs it; explain principle/why/how)
+- Objective A (customer value regression): predict customer "future spend" (CLV) from RFM features, to rank customers for operations.
+- Objective B (repurchase classification): predict whether a customer buys again after the observation window (churn warning) — time split, no leakage.
+- Methods: baseline linear regression / logistic regression + tree models (RF/GBM); DL judgment: ~4,400 customers, no sequence advantage, DL adds little and is hard to explain — DL not used, reason stated.
+- Metrics: regression RMSE/R², classification AUC/PR; honest limits on sample size and time window.
 
-## 6. 可视化（每图 Insight/Action）
-- 收入对账瀑布/缺口：总营收→退货→净营收。
-- 月度营收与退货趋势。
-- 客户贡献集中度（帕累托：前 X% 客户贡献 Y%）。
-- RFM/客户价值分层条形。
-- ML 特征重要性 / CLV 预测 vs 实际。
-- 复购分类 ROC/AUC + 高风险客户群画像。
+## 6. Visualizations (each chart Insight/Action)
+- Revenue reconciliation waterfall/gap: total revenue → returns → net.
+- Monthly revenue and return trend.
+- Customer contribution concentration (Pareto: top X% of customers contribute Y%).
+- RFM / customer value tier bars.
+- ML feature importance / CLV predicted vs actual.
+- Repurchase classification ROC/AUC + high-risk customer profile.
 
-## 7. 建议（落地）
-- 收入回收：退货高发 SKU/国家优化、取消单流程。
-- 客户运营：高价值客户分层运营、流失预警触发复购触达。
-- 下一步：逐笔对账需支付/退款流水，列为外部数据缺口。
+## 7. Recommendations (landing)
+- Revenue recovery: optimize return-prone SKUs/countries, cancellation flow.
+- Customer operations: tiered operations for high-value customers, churn-warning triggered repurchase outreach.
+- Next step: line-level reconciliation needs payment/refund flow, listed as an external data gap.
 
-## 8. 交付
-- 中文 HTML 报告（第三套配色：海军蓝+珊瑚），每图 Insight/Action。
-- 仓库：scripts/tests/data/output + README + requirements；本地 git 小步提交，暂不 push。
+## 8. Deliverables
+- Bilingual HTML reports (third palette: navy + coral), each chart Insight/Action.
+- Repo: scripts/tests/data/output + README + requirements; local git committed in small steps.
