@@ -1,4 +1,6 @@
 # 电商收入对账与客户价值分析（Online Retail Revenue Reconciliation & Customer Value）
+![CI](https://github.com/JLXYwjw/online-retail-revenue-recovery/actions/workflows/ci.yml/badge.svg)
+
 
 > 项目目标：量化电商收入通过取消/退货"漏走"的金额，并识别哪些客户会回购、价值几何，让运营把钱和精力投在留住高价值客户上。
 > 数据：真实 UCI Online Retail 交易数据（541,909 行，英国零售商，2010–2011），非合成。
@@ -71,3 +73,9 @@ pytest tests/ -q
 - 行级支付/退款对账需要银行/平台流水；本项目只量化交易层漏损——列为下一步。
 
 — Jiawei Wang
+
+## CI / 质量门
+
+每次 push 或拉取请求都会触发 [GitHub Actions](.github/workflows/ci.yml) 工作流：质量门检查「英文文档不含中文、引用的图表都存在、中英 README 与 index 齐全」，随后运行 `pytest` 测试套件。
+
+![CI](https://github.com/JLXYwjw/online-retail-revenue-recovery/actions/workflows/ci.yml/badge.svg)

@@ -1,4 +1,6 @@
 # Online Retail — Revenue Reconciliation & Customer Value
+![CI](https://github.com/JLXYwjw/online-retail-revenue-recovery/actions/workflows/ci.yml/badge.svg)
+
 
 **The business problem.** An online retailer bills revenue, then watches some of
 it leak back through cancellations and returns. Nobody has quantified the leak,
@@ -94,3 +96,9 @@ kaggle datasets download -d tunguz/online-retail -p data/raw --unzip
 ```
 
 — Jiawei Wang
+
+## CI / Quality Gate
+
+Every push or pull request runs a [GitHub Actions](.github/workflows/ci.yml) workflow: a quality gate checks that English docs contain no Chinese, every referenced chart exists, and the bilingual README + index are all present; then `pytest` runs the test suite.
+
+![CI](https://github.com/JLXYwjw/online-retail-revenue-recovery/actions/workflows/ci.yml/badge.svg)
