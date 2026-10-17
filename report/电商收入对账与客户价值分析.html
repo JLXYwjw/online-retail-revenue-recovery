@@ -219,7 +219,7 @@
     <tr><td>随机森林</td><td>0.588</td><td>0.905</td><td>0.021</td><td>$18,709</td></tr>
     <tr><td>梯度提升 GBM</td><td>0.627</td><td>0.925</td><td>0.086</td><td>$18,074</td></tr>
   </table>
-  <p class="muted">复购分类 PR-AUC 高（0.92+）因正样本多（86.5% 复购）；AUC ~0.63 中等。CLV 回归上线性最优（R² 0.32），树模型过拟合（样本少）。</p>
+  <p class="muted">复购分类 PR-AUC 高（0.92+）因正样本多（86.5% 复购）；AUC ~0.63 中等。CLV 回归上线性最优（R² 0.32），树模型过拟合（样本少）。选型说明：复购上 GBM（AUC 0.627）与逻辑回归（0.628）差异很小，选 GBM 基于 PR-AUC 略优（0.925）与树模型可扩展性；CLV 因线性最优（R² 0.32）、树过拟合，采用线性回归。</p>
 
   <h3>4.2 特征重要性 —— 历史消费金额主导，近期与购买次数次之</h3>
   <div class="bar"><div class="bl">monetary（历史消费）</div><div class="track"><div class="fill" style="width:87%;background:#b23a48"></div></div><div class="bv">0.35+0.26</div></div>

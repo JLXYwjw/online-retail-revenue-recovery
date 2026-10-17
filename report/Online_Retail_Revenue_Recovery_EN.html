@@ -217,7 +217,7 @@
     <tr><td>Random Forest</td><td>0.588</td><td>0.905</td><td>0.021</td><td>$18,709</td></tr>
     <tr><td>GBM</td><td>0.627</td><td>0.925</td><td>0.086</td><td>$18,074</td></tr>
   </table>
-  <p class="muted">Repurchase PR-AUC is high (0.92+) because positives dominate (86.5% repurchase); AUC ~0.63 is medium. For CLV, linear wins (R² 0.32); trees overfit (small sample).</p>
+  <p class="muted">Repurchase PR-AUC is high (0.92+) because positives dominate (86.5% repurchase); AUC ~0.63 is medium. For CLV, linear wins (R² 0.32); trees overfit (small sample). Model choice: on repurchase GBM (AUC 0.627) and logistic (0.628) differ little — GBM is chosen on a slightly higher PR-AUC (0.925) and tree extensibility; for CLV, linear regression is used because it wins (R² 0.32) and trees overfit.</p>
 
   <h3>4.2 Feature importance — historical spend dominates, recency &amp; frequency next</h3>
   <div class="bar"><div class="bl">monetary</div><div class="track"><div class="fill" style="width:87%;background:#b23a48"></div></div><div class="bv">0.35+0.26</div></div>
