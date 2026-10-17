@@ -1,3 +1,12 @@
+import os
+from pathlib import Path
+import pytest
+_CLEAN_OUT = Path("data/output") / "retail_clean.parquet"
+pytestmark = pytest.mark.skipif(
+    not _CLEAN_OUT.exists(),
+    reason="cleaned parquet absent (git-excluded); run cleaning first",
+)
+
 # -*- coding: utf-8 -*-
 """电商清洗口径测试：三张清洗表的结构与一致性、时间切分无泄漏。"""
 from pathlib import Path
